@@ -17,6 +17,7 @@ RUN echo "mysql-server-5.5 mysql-server/root_password seen true" | debconf-set-s
 RUN echo "mysql-server-5.5 mysql-server/root_password_again seen true" | debconf-set-selections
 
 RUN apt-get install -y supervisor apache2 php5 php5-gd php-xml-parser php5-intl php5-sqlite mysql-server-5.5 smbclient curl libcurl3 php5-mysql php5-curl bzip2 wget vim openssl ssl-cert sharutils
+RUN systemctl enable mysqld && systemctl start mysqld
 
 RUN wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C /var/www/;chown -R www-data:www-data /var/www/owncloud
 
